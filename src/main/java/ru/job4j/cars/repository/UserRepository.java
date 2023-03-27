@@ -124,7 +124,9 @@ public class UserRepository {
         List<User> users = new ArrayList<>();
         try {
             session.beginTransaction();
-            users = session.createQuery("from User", User.class).list();
+            users = session.createQuery("from User where login like '%:login%'", User.class)
+                    .setParameter("login", key)
+                    .list();
             session.getTransaction().commit();
         } catch (Exception ex) {
             session.getTransaction().rollback();
