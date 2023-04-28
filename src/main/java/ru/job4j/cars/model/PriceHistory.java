@@ -4,8 +4,6 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "price_history")
@@ -18,8 +16,4 @@ public class PriceHistory {
     private int before;
     private int after;
     private Timestamp created;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "auto_user_id")
-    private List<Post> posts = new ArrayList<>();
 }
