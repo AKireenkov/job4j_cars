@@ -11,6 +11,6 @@ public class Participates {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private int post_id;
-    private int user_id;
+    private int postId;
+    private int userId;
 }
