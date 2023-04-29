@@ -1,7 +1,7 @@
 package ru.job4j.cars.repository;
 
 import lombok.AllArgsConstructor;
-import ru.job4j.cars.model.Participates;
+import ru.job4j.cars.model.Post;
 
 import java.util.List;
 import java.util.Map;
@@ -11,12 +11,12 @@ import java.util.Optional;
 public class ParticipatesRepository {
     private final CrudRepository crudRepository;
 
-    public Participates create(Participates model) {
+    public <T> T create(T model) {
         crudRepository.run(session -> session.persist(model));
         return model;
     }
 
-    public void update(Participates participate) {
+    public <T> void update(T participate) {
         crudRepository.run(session -> session.merge(participate));
     }
 
@@ -27,12 +27,12 @@ public class ParticipatesRepository {
         );
     }
 
-    public List<Participates> findAll() {
-        return crudRepository.query("from Participates", Participates.class).stream().toList();
+    public <T> List<Post> findAll() {
+        return crudRepository.query("from Participates", Post.class).stream().toList();
     }
 
-    public Optional<Participates> findById(Integer id) {
-        return crudRepository.optional("from Participates order by id asc", Participates.class,
+    public Optional<Post> findById(Integer id) {
+        return crudRepository.optional("from Participates order by id asc", Post.class,
                 Map.of("fId", id));
     }
 }
