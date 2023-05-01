@@ -22,17 +22,17 @@ public class ParticipatesRepository {
 
     public void delete(Integer id) {
         crudRepository.run(
-                "delete from Participates where id = :fId",
+                "delete from Post where id = :fId",
                 Map.of("fId", id)
         );
     }
 
     public <T> List<Post> findAll() {
-        return crudRepository.query("from Participates", Post.class).stream().toList();
+        return crudRepository.query("from Post", Post.class).stream().toList();
     }
 
     public Optional<Post> findById(Integer id) {
-        return crudRepository.optional("from Participates order by id asc", Post.class,
+        return crudRepository.optional("from Post order by id asc", Post.class,
                 Map.of("fId", id));
     }
 }
