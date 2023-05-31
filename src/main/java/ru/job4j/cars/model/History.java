@@ -15,4 +15,8 @@ public class History {
     private int id;
     private LocalDateTime startAt;
     private LocalDateTime endAt;
+
+    @ManyToOne
+    @JoinColumn(name = "id")
+    private PriceHistory priceHistory;
 }
