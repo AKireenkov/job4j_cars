@@ -22,5 +22,5 @@ public class History {
 
     @ManyToOne
     @JoinColumn(name = "id")
-    private Car Car;
+    private Car car;
 }
