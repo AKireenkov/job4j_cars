@@ -18,5 +18,9 @@ public class History {
 
     @ManyToOne
     @JoinColumn(name = "id")
-    private PriceHistory priceHistory;
+    private Owner owner;
+
+    @ManyToOne
+    @JoinColumn(name = "id")
+    private Car Car;
 }
