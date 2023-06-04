@@ -1,17 +1,21 @@
 package ru.job4j.cars.repository;
 
 import lombok.AllArgsConstructor;
+import org.hibernate.query.criteria.internal.expression.function.CurrentDateFunction;
 import ru.job4j.cars.model.Post;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
+
+import static java.time.LocalDateTime.*;
 
 @AllArgsConstructor
 public class PostRepository {
 
     private final CrudRepository crudRepository;
+
+    public static final String DATE_TIME_WITHOUT_LAST_DAY = now().minus(1, ChronoUnit.DAYS).toString();
 
     /**
      * Объявления за последний день.
@@ -20,7 +24,8 @@ public class PostRepository {
      */
     public List<Post> postFromLastDay() {
         return new ArrayList<>(crudRepository.query(
-                "from Post where where created = CURRENT_DATE", Post.class
+                "from Post where where created > :fDateTime", Post.class,
+                Map.of("fDateTime", DATE_TIME_WITHOUT_LAST_DAY)
         ));
     }
 
