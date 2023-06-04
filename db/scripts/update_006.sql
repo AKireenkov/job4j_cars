@@ -1,3 +1,3 @@
 ALTER TABLE auto_post
-ADD photo varchar,
-ADD mark varchar;
+ADD COLUMN photo varchar,
+ADD COLUMN mark varchar;
