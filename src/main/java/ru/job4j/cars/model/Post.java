@@ -17,6 +17,8 @@ public class Post {
     private int id;
     private String description;
     private LocalDateTime created;
+    private Photo photo;
+    private Mark mark;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "auto_user_id")
