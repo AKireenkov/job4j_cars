@@ -17,7 +17,13 @@ public class Post {
     private int id;
     private String description;
     private LocalDateTime created;
-    private Photo photo;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "photo_id")
+    private List<Photo> photos = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "mark_id")
     private Mark mark;
 
     @OneToMany(cascade = CascadeType.ALL)
