@@ -34,7 +34,7 @@ public class PostRepository {
      */
     public List<Post> postWithPhoto() {
         return new ArrayList<>(crudRepository.query(
-                "from Post where photo is not null", Post.class
+                "from Post where size(photo) > 0", Post.class
         ));
     }
 
